@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
@@ -77,12 +78,17 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': dj_database_url.parse('postgres://aoqnzlftpwxqap:2a97da867e56c524f4945a4b8c16aa7dc8e96691494dfc696869b78131d70b65@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/df8bj6c960chof')
 }
+
 
 
 # Password validation
